@@ -1,0 +1,21 @@
+{% load staticfiles %} <!-- load staticfiles는 밑에 {%static ~}를 사용하기 위해 추가해야해서 한거임! -->
+<!-- 
+html  베이스
+기본 css 적용
+-->
+<html>
+	<head>		
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"  />
+		<title>요즘유행</title>
+	</head>
+	<body>
+		<div id="container">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>

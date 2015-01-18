@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+	<table border="1" width="1000" cellspacing="0">
+		<tr bgcolor="pink"><th>번호</th><th width="40%">제목</th><th>등록일</th><th>업데이트일</th><th>수정삭제</th></tr>  
+		{% if boardList %}
+          		<ul>
+	              	{% for boardRow in boardList %}
+	              	<tr>
+			              <td width=50><p align=center>{{ boardRow.id }}</p></td>
+			              <td width=320>
+			                  <p align=center>
+			                  	<!-- 여기 좀 더 봐야댕 -->
+			                      <a href="/viewWork?memo_id={{ boardRow.id }}&current_page={{ current_page }}&searchStr=None" title="{{ boardRow.memo}}">{{ boardRow.title }}
+			                  </p>
+			              </td>
+			              <td width=100><p align=center>{{ boardRow.register_date }}</p></td>
+			              <td width=100><p align=center>{{ boardRow.update_date }}</p></td>
+	              	</tr>
+	             	 {% endfor %}
+          		</ul>
+      		{% else %}
+          		<p>No Data.</p>
+      		{% endif %}
+ 	 </table>
+
+ 	 <table width=700>
+		<tr>
+			<td><input type=button value="글쓰기"  OnClick="window.location='./write'"></td>
+		</tr>
+	</table>
+{% endblock %}

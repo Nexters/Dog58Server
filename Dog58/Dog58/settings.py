@@ -11,7 +11,18 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+STATIC_URL = '/static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    ("css", os.path.join(STATIC_ROOT, 'css')),
+)
+
+# STATICFILES_FINDERS = (
+#         'django.contrib.staticfiles.finders.FileSystemFinder',
+#         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -36,7 +47,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'board'
+    'board',
+    'android',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +68,6 @@ WSGI_APPLICATION = 'Dog58.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,8 +81,6 @@ DATABASES = {
 LANGUAGE_CODE = 'ko-kr'
 DATABASE_OPTIONS = {'charset': 'utf8'}
 TIME_ZONE = 'Asia/Seoul'
-
-TIME_ZONE = ''
 
 USE_I18N = True
 
