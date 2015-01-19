@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+	<table border="1" width="1000" cellspacing="0">
+		<tr bgcolor="pink"><th>번호</th><th width="40%">제목</th><th>등록일</th><th>업데이트일</th><th>수정삭제</th></tr>  
+		{% if content %}
+          		<ul>
+	              	<tr>
+			              <td width=50><p align=center>{{ content.id }}</p></td>
+			              <td width=320>
+			                  <p align=center>
+			                      	{{ content.title }}
+			                  </p>
+			              </td>
+			              <td width=100><p align=center>{{ content.register_date }}</p></td>
+			              <td width=100><p align=center>{{ content.update_date }}</p></td>
+	              	</tr>
+          		</ul>
+      		{% else %}
+          		<p>No Data.</p>
+      		{% endif %}
+ 	 </table>
+
+ 	 <table width=700>
+{% endblock %}

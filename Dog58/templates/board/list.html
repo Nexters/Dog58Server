@@ -10,7 +10,8 @@
 			              <td width=320>
 			                  <p align=center>
 			                  	<!-- 여기 좀 더 봐야댕 -->
-			                      <a href="/viewWork?memo_id={{ boardRow.id }}&current_page={{ current_page }}&searchStr=None" title="{{ boardRow.memo}}">{{ boardRow.title }}
+			                      <a href= "{% url 'board:get' boardRow.id %}" title="">
+			                      	{{ boardRow.title }}
 			                  </p>
 			              </td>
 			              <td width=100><p align=center>{{ boardRow.register_date }}</p></td>

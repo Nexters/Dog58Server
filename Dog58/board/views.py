@@ -3,24 +3,33 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from board import forms
+from board.models import Board
 # Create your views here.
 
 def  getList(request) :
-	context = {}
+	boardList = Board.objects.all()
+	context = {"boardList" : boardList}
 	return render(request, "board/list.html", context)
-	# return HttpResponse("안녕")
+
+def get(request, board_id) :
+	content = Board.objects.get(id = board_id)
+	context = {"content" : content}
+	# if content :
+		# return render(request, "board/content.html", context)
+	# return HttpResponse(content)
+	return render(request, "board/content.html", context)
 
 def write(request) :
 	return render(request, "board/write.html", )
 	# return render_to_response('write.html')
 
 def save(request) :
-	if request.method == 'POST' :
-		form = forms.boardForm(request.POST)
-		if form.is_valid() :
-			return HttpResponseRedirect(request, "board/list.html", )
-	else :
-		form = boardForm()
+	# if request.method == 'POST' :
+	# 	form = forms.boardForm(request.POST)
+	# 	if form.is_valid() :
+	# 		return HttpResponseRedirect(request, "board/list.html", )
+	# else :
+	# 	form = boardForm()
 	return HttpResponse("안녕")
 
 # def detail(request, question_id) :

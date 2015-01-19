@@ -3,9 +3,8 @@
 {% block content %}
 <!-- 여기에 코드 추가 -->
 	<center>
-		<form name="boardForm" method=post action="../save/">
-			{% csrf_token %}
-    			{{ form }}
+		<form name="boardForm" method=post action="{% url 'board:save' %}">
+			{% csrf_token %} 
 			<table cellpadding=5 cellspacing=0 border="1">
 				<tr>
 					<td bgcolor="pink">제목</td>

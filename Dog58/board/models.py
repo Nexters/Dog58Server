@@ -7,3 +7,6 @@ class Board(models.Model) :
 	content = models.TextField()
 	register_date = models.DateTimeField(auto_now_add = True, auto_now = True)
 	update_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+	
+	def __str__(self):    
+        		return self.title
