@@ -2,9 +2,12 @@
 
 from django.contrib import admin
 from board.models import Board
+from ckeditor.widgets import CKEditorWidget
+from board.forms import BoardAdminForm
 
 class BoardAdmin(admin.ModelAdmin) :
-	list_display = ('id', 'title')
+	list_display = ('id', 'title', 'title_img', 'content', 'register_date', 'update_date')
+    	form = BoardAdminForm
 
 # Register your models here.
 admin.site.register(Board, BoardAdmin)

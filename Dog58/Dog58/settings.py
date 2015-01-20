@@ -12,12 +12,24 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-
 STATIC_URL = '/static/' 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     ("css", os.path.join(STATIC_ROOT, 'css')),
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND =  "pillow"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+    },
+}
 
 # STATICFILES_FINDERS = (
 #         'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -50,6 +62,7 @@ INSTALLED_APPS = (
     'board',
     'android',
     'administrator',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
