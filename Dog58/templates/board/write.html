@@ -1,9 +1,16 @@
 {% extends "base.html" %}
-
 {% block content %}
-<!-- 여기에 코드 추가 -->
 	<center>
-		<form name="boardForm" method=post action="{% url 'board:save' %}">
+		<form>
+			 {{ form.media }}   {{ form.as_p }}
+
+    			<input type="submit" value="확인"/>
+
+		</form>
+	</center>
+{% endblock %}
+
+<!-- <form name="boardForm" method=post action="{% url 'board:save' %}">
 			{% csrf_token %} 
 			<table class ="table">
 				<tr>
@@ -16,18 +23,11 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td colspan="2"><textarea rows="5" name="contents" cols="40"></textarea></td>
+					<td>{{ form.media }}   {{ form.as_p }}</td>
 				</tr>
 				<tr>
 					<td>사진</td>
 					<td><input type="text" name="title_img"></td>
 				</tr>
 			</table>
-			<br><br>
-			<!-- <input type="hidden" name="action" value="insert"/> -->
-			<!-- <input type="hidden" name="hits" value="0"/> -->
-			<!-- <input type="button" value="목록" onClick="javascript:list()"/> -->
-			<input type="submit" value="등록"/>
-		</form>
-	</center>
-{% endblock %}
+			<br><br> -->

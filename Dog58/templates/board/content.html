@@ -4,7 +4,7 @@
 
 	<table class="table">
 		<thead>
-		<tr><th>번호</th><th>제목</th><th>등록일</th><th>업데이트일</th><th>수정삭제</th></tr>  
+		<tr><th>번호</th><th>제목</th><th>내용</th><th>등록일</th><th>업데이트일</th><th>수정삭제</th></tr>  
 		</thead>
 		<tbody>
 		{% if content %}
@@ -13,6 +13,11 @@
 			              <td>
 			                  <p>
 			                      	{{ content.title }}
+			                  </p>
+			              </td>
+			              <td>
+			                  <p>
+			                      	{{ content.content }}
 			                  </p>
 			              </td>
 			              <td><p>{{ content.register_date }}</p></td>
