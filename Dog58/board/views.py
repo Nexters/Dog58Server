@@ -30,7 +30,7 @@ def save(request) :
 	# 		return HttpResponseRedirect(request, "board/list.html", )
 	# else :
 	# 	form = boardForm()
-	return HttpResponse("안녕")
+	return HttpResponseRedirect(reverse('board:getList'))
 
 #롤백 구현 추가하기
 def delete(request, board_id) :
