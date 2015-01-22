@@ -19,9 +19,7 @@ def get(request, board_id) :
 	return render(request, "board/content.html", context)
 
 def write(request):
-    	form = BoardAdminForm()
-   	tpl  = "board/write.html"
-    	return render(request, tpl, {"form" : form}) 
+    	return render(request, "board/write.html", {"form" : BoardAdminForm()}) 
 
 def save(request) :
 	# if request.method == 'POST' :
