@@ -19,9 +19,13 @@ def get(request, board_id) :
 	return render(request, "board/content.html", context)
 
 def write(request):
+<<<<<<< HEAD
     	form = BoardAdminForm()
    	tpl  = "board/write.html"
     	return render(request, tpl, {"form" : form}) 
+=======
+    	return render(request, "board/write.html", {"form" : BoardAdminForm()}) 
+>>>>>>> LimHeeJho
 
 def save(request) :
 	# if request.method == 'POST' :
@@ -30,7 +34,7 @@ def save(request) :
 	# 		return HttpResponseRedirect(request, "board/list.html", )
 	# else :
 	# 	form = boardForm()
-	return HttpResponse("안녕")
+	return HttpResponseRedirect(reverse('board:getList'))
 
 #롤백 구현 추가하기
 def delete(request, board_id) :

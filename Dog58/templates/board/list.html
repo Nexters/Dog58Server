@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-	<table class ="table table-hover">
+	<table class ="table table-hover table-bordered">
 		<thead>
 			<tr>
-				<th>번호</th><th>제목</th><th>등록일</th><th>업데이트일</th><th>수정삭제</th></tr>  
+				<th>#</th><th>제목</th><th>등록일</th><th>업데이트일</th><th>삭제</th></tr>  
 			</tr>
 		</thead>
 		<tbody>	
@@ -11,14 +11,10 @@
 	              	{% for boardRow in boardList %}
 	              	<tr>
 			              <td><p>{{ boardRow.id }}</p></td>
-			              <td>
-			                  <p>
-			                      <a href= "{% url 'board:get' boardRow.id %}" title="">{{ boardRow.title }}</a>
-			                  </p>
-			              </td>
-			              <td><pr>{{ boardRow.register_date }}</p></td>
+			              <td><p><a href= "{% url 'board:get' boardRow.id %}" title="">{{ boardRow.title }}</a></p></td>
+			              <td><p>{{ boardRow.register_date }}</p></td>
 			              <td><p>{{ boardRow.update_date }}</p></td>
-			              <td><p>수정 삭제</p></td>
+			              <td><input type=button value="삭제"  OnClick="window.location='./delete/{{ boardRow.id }}'"></td>
 	              	</tr>
 	             	 {% endfor %}
       		{% else %}
