@@ -12,10 +12,10 @@ class User(models.Model) :
 	def __unicode__(self):    
         		return self.user_id
 
-	def dic(self):
-        		fields = ['user_id', 'user_age', 'first_date', 'last_date', 'push_cnt', 'board']
-        		result = {}
-	        	for field in fields :
-	            		result[field] = self.__dict__[field]
+	# def dic(self):
+ #        		fields = ['user_id', 'user_age', 'first_date', 'last_date', 'push_cnt', 'board']
+ #        		result = {}
+	#         	for field in fields :
+	#             		result[field] = self.__dict__[field]
 
-	            	return result
+	#             	return result
