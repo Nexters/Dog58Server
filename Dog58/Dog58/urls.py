@@ -9,10 +9,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^board/', include('board.urls', namespace='board')),
-<<<<<<< HEAD
-=======
+
     url(r'^android/', include('android.urls', namespace='android')),
->>>>>>> LimHeeJho
     url(r'^ckeditor/', include('ckeditor.urls')),
 )
 
