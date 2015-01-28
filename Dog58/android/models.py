@@ -9,8 +9,8 @@ class User(models.Model) :
 	push_cnt = models.IntegerField(default=0)
 	board = models.ManyToManyField('board.Board', null=True, blank=True)
 
-	def __unicode__(self):    
-        		return self.user_id
+	def __unicode__(self):
+		return self.user_id
 
 	# def dic(self):
  #        		fields = ['user_id', 'user_age', 'first_date', 'last_date', 'push_cnt', 'board']
