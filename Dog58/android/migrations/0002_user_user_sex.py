@@ -7,14 +7,14 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('board', '0006_auto_20150120_1626'),
+        ('android', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='board',
-            name='share_cnt',
-            field=models.IntegerField(default=0),
-            preserve_default=True,
+            model_name='user',
+            name='user_sex',
+            field=models.CharField(default='M', max_length=2),
+            preserve_default=False,
         ),
     ]

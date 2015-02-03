@@ -4,7 +4,7 @@ from android.models import User
 # -*- coding: utf-8 -*-
 
 class UserAdmin(admin.ModelAdmin) :
-	list_display = ('user_id', 'user_age', 'first_date', 'last_date', 'push_cnt',)
+	list_display = ('user_id', 'user_age', 'user_sex', 'first_date', 'last_date', 'push_cnt',)
     	filter_horizontal = ('board',)
 # Register your models here.
 admin.site.register(User, UserAdmin)

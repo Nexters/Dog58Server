@@ -19,10 +19,9 @@ def get(request, board_id) :
 	return render(request, "board/content.html", context)
 
 def write(request):
-    	form = BoardAdminForm()
-   	tpl  = "board/write.html"
-    	return render(request, tpl, {"form" : form}) 
-    	return render(request, "board/write.html", {"form" : BoardAdminForm()}) 
+	form = BoardAdminForm()
+	tpl  = "board/write.html"
+	return render(request, tpl, {"form" : form}) 
 
 def save(request) :
 	# if request.method == 'POST' :
@@ -39,5 +38,4 @@ def delete(request, board_id) :
 	# try : 
 	board.delete()
 	# except :
-	#에러 원인 뭔지 찾기
 	return HttpResponseRedirect(reverse('board:getList'))

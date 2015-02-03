@@ -61,7 +61,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'board',
     'android',
-    'administrator',
     'ckeditor',
 )
 
@@ -85,9 +84,12 @@ WSGI_APPLICATION = 'Dog58.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MySQL',
+        'NAME': 'MYSQL',
         'USER':'root',
         'PASSWORD' : '1180',
+        # 'NAME': 'todaytrend',
+        # 'USER':'root',
+        # 'PASSWORD' : 'todaytrend58',
     }
 }
 
@@ -103,9 +105,3 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
