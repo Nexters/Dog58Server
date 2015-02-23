@@ -20,8 +20,7 @@ def  createUser(request) :
 		user = User(user_id=user_id, user_age=user_age, user_sex=user_sex)
 		try :
 			user.save()
-			return render(request, "android/confirm.html", {})
-			 # HttpResponse("Done")
+			return HttpResponse("Done")
 		except IntegrityError :
 			return HttpResponse("user id %s already exists" % user_id)
 
@@ -30,21 +29,6 @@ def  createUser(request) :
 # /android/content/<board_id>/
 def getBoard(request, board_id) :
 	try :
-		# query = Board.objects.get(id=board_id)
-		# resp = {}
-
-		# aPost = {}
-		# aPost['title_img'] = str(query.title_img)
-		# aPost['title'] = query.title
-		# aPost['content'] = query.content
-		# aPost['register_date'] = str(query.register_date)
-		# aPost['update_date'] = str(query.update_date)
-		# aPost['share_cnt'] = str(query.share_cnt)
-		# aPost['id'] = query.id
-		
-		# resp['aPost'] = aPost
-		# json_data = json.dumps(resp)
-
 		query = Board.objects.get(id = board_id)
 		context = {"content" : query}
 		return render(request, "android/detail.html", context)
