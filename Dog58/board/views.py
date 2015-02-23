@@ -24,15 +24,8 @@ def write(request):
 	return render(request, tpl, {"form" : form}) 
 
 def save(request) :
-	# if request.method == 'POST' :
-	# 	form = BoardAdminForm(request.POST)
-	# 	if form.is_valid() :
-	# 		return HttpResponseRedirect(request, "board/list.html", )
-	# else :
-	# 	form = boardForm()
 	return HttpResponseRedirect(reverse('board:getList'))
 
-#롤백 구현 추가하기
 def delete(request, board_id) :
 	board = Board.objects.get(id = board_id)
 	# try : 

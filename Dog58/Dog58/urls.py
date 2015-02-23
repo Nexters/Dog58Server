@@ -12,6 +12,9 @@ urlpatterns = patterns('',
 
     url(r'^android/', include('android.urls', namespace='android')),
     url(r'^ckeditor/', include('ckeditor.urls')),
+
+    url(r'', include('gcm.urls')),
+    # url(r'', include('gcm.urls')),
 )
 
 if settings.DEBUG:

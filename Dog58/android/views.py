@@ -6,10 +6,11 @@ import json
 from django.core import serializers
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-# from django.views.decorators.csrf import csrf_protect
+from datetime import datetime, date, time
+from django.shortcuts import render, render_to_response
 # Create your views here.
 
-# @csrf_protect
+# /android/user/
 def  createUser(request) :
 	if request.method == 'POST':
 		user_id = request.POST.get('user_id')
@@ -19,35 +20,41 @@ def  createUser(request) :
 		user = User(user_id=user_id, user_age=user_age, user_sex=user_sex)
 		try :
 			user.save()
-			return HttpResponse("Done")
+			return render(request, "android/confirm.html", {})
+			 # HttpResponse("Done")
 		except IntegrityError :
 			return HttpResponse("user id %s already exists" % user_id)
 
 	return HttpResponse("request metod is not POST")
 
-
+# /android/content/<board_id>/
 def getBoard(request, board_id) :
 	try :
-		query = Board.objects.get(id=board_id)
-		resp = {}
+		# query = Board.objects.get(id=board_id)
+		# resp = {}
 
-		aPost = {}
-		aPost['title_img'] = str(query.title_img)
-		aPost['title'] = query.title
-		aPost['content'] = query.content
-		aPost['register_date'] = str(query.register_date)
-		aPost['update_date'] = str(query.update_date)
-		aPost['share_cnt'] = str(query.share_cnt)
-		aPost['id'] = query.id
+		# aPost = {}
+		# aPost['title_img'] = str(query.title_img)
+		# aPost['title'] = query.title
+		# aPost['content'] = query.content
+		# aPost['register_date'] = str(query.register_date)
+		# aPost['update_date'] = str(query.update_date)
+		# aPost['share_cnt'] = str(query.share_cnt)
+		# aPost['id'] = query.id
 		
-		resp['aPost'] = aPost
-		json_data = json.dumps(resp)
-		return HttpResponse(json_data)
+		# resp['aPost'] = aPost
+		# json_data = json.dumps(resp)
+
+		query = Board.objects.get(id = board_id)
+		context = {"content" : query}
+		return render(request, "android/detail.html", context)
+		# return HttpResponse(json_data)
 	except ObjectDoesNotExist:
 		return HttpResponse("board id %s does not exist!" % board_id)
 	except MultipleObjectsReturned:
 		return HttpResponse("MultipleObjectsReturned")
 
+# /android/push/
 def push(request) :
 	if request.method == 'POST':
 		user_id = request.POST.get('user_id')
@@ -66,6 +73,7 @@ def push(request) :
 
 	return HttpResponse("request metod is not POST")
 
+#  /android/share/<board_id>/
 def share(request, board_id) :
 	if request.method == 'POST':
 		user_id = request.POST.get('user_id')
@@ -92,10 +100,17 @@ def share(request, board_id) :
 		except MultipleObjectsReturned:
 			return HttpResponse("board MultipleObjectsReturned")
 
-
+# /android/content/all/
 def  all(request) :
 	#나중에 날짜고려해서 받아야함. 지금은 임시로...
-	querySet = Board.objects.filter(register_date__year=2015)
+	now = datetime.now()
+	querySet = Board.objects.filter(update_date__year = now.year, update_date__month = now.month, update_date__day = now.day)
+	if now.hour <13 :
+		querySet = querySet.filter(update_date__year = now.year - 1, update_date__hour=12)
+	elif now.hour < 18 :
+		querySet = querySet.filter(update_date__hour=06)
+	else :
+		querySet = querySet.filter(update_date__hour=00)
 	resp = {}
 	postList = []
 	for obj in querySet:
