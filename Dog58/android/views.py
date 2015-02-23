@@ -102,15 +102,8 @@ def share(request, board_id) :
 
 # /android/content/all/
 def  all(request) :
-	#나중에 날짜고려해서 받아야함. 지금은 임시로...
 	now = datetime.now()
-	querySet = Board.objects.filter(update_date__year = now.year, update_date__month = now.month, update_date__day = now.day)
-	if now.hour <13 :
-		querySet = querySet.filter(update_date__year = now.year - 1, update_date__hour=12)
-	elif now.hour < 18 :
-		querySet = querySet.filter(update_date__hour=06)
-	else :
-		querySet = querySet.filter(update_date__hour=00)
+	querySet = Board.objects.filter(update_date_start__lt=now, update_date_end__gt=now)
 	resp = {}
 	postList = []
 	for obj in querySet:
