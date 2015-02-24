@@ -95,6 +95,10 @@ def  all(request) :
 		aPost['title_img'] = str(obj.title_img)
 		aPost['title'] = obj.title
 		aPost['id'] = obj.id
+		aPost['register_date'] = str(obj.register_date)
+		aPost['update_date_start'] = str(obj.update_date_start)
+		aPost['update_date_end'] = str(obj.update_date_end)
+		aPost['share_cnt'] = str(obj.share_cnt)
 		postList.append(aPost)
 	resp['post_list'] = postList
 	json_data = json.dumps(resp)

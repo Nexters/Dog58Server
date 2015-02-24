@@ -13,7 +13,7 @@
 			              <td><p>{{ boardRow.id }}</p></td>
 			              <td><p><a href= "{% url 'board:get' boardRow.id %}" title="">{{ boardRow.title }}</a></p></td>
 			              <td><p>{{ boardRow.register_date }}</p></td>
-			              <td><p>{{ boardRow.update_date }}</p></td>
+			              <td><p>{{ boardRow.update_date_end }}</p></td>
 			              <td><input type=button value="삭제"  OnClick="window.location='./delete/{{ boardRow.id }}'"></td>
 	              	</tr>
 	             	 {% endfor %}
