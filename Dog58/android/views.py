@@ -93,6 +93,7 @@ def  all(request) :
 	for obj in querySet:
 		aPost = {}
 		aPost['title_img'] = str(obj.title_img)
+		aPost['thumbnail'] = str(obj.thumbnail)
 		aPost['title'] = obj.title
 		aPost['id'] = obj.id
 		aPost['register_date'] = str(obj.register_date)
